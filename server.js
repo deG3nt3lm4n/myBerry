@@ -23,8 +23,7 @@ app.use(bodyParser.urlencoded({limit: '10mb', extended: false}))
 let port = process.env.DATABASE_URL;
 const mongoose = require('mongoose')
 mongoose.connect(port,{
-  useNewUrlParser: true,
-  useUnifiedTopology: true
+  useNewUrlParser: true
 })
 
 const db = mongoose.connection
