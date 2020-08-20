@@ -20,9 +20,8 @@ app.use(express.static('public'))
 app.use(bodyParser.urlencoded({limit: '10mb', extended: false}))
 
 // db
-let port = process.env.DATABASE_URL;
 const mongoose = require('mongoose')
-mongoose.connect(port,{
+mongoose.connect(process.env.DATABASE_URL,{
   useNewUrlParser: true
 })
 
@@ -35,4 +34,7 @@ app.use('/', indexRouter)
 app.use('/authors', authorRouter)
 
 // Port info
-app.listen(process.env.PORT || 3000)
+const port = process.env.PORT || 3000
+app.listen(port, () =>{
+  console.log(`This bitch is on ${port} find it`)
+})
